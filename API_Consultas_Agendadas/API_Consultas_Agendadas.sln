@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32825.248
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API_Consultas_Agendadas", "API_Consultas_Agendadas.csproj", "{DDC4BA28-2252-4E54-A9B1-39FABACE2DDA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Consultas_Agendadas_Tests", "..\Consultas_Agendadas_Tests\Consultas_Agendadas_Tests.csproj", "{61AAD0EF-2FC7-4FC7-9EE5-2FB9B34C7B8D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DDC4BA28-2252-4E54-A9B1-39FABACE2DDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDC4BA28-2252-4E54-A9B1-39FABACE2DDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDC4BA28-2252-4E54-A9B1-39FABACE2DDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDC4BA28-2252-4E54-A9B1-39FABACE2DDA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61AAD0EF-2FC7-4FC7-9EE5-2FB9B34C7B8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61AAD0EF-2FC7-4FC7-9EE5-2FB9B34C7B8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61AAD0EF-2FC7-4FC7-9EE5-2FB9B34C7B8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61AAD0EF-2FC7-4FC7-9EE5-2FB9B34C7B8D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A6533B1A-78C7-43A9-8DEA-B3AE1EA7A33A}
+	EndGlobalSection
+EndGlobal
