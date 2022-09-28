@@ -18,35 +18,19 @@ namespace API_Consultas_Agendadas.Controllers
         }
 
         /// <summary>
-        /// Espaço para login de Pacientes
+        /// Espaço para login
         /// </summary>
-        /// <param name="email">Email do paciente</param>
-        /// <param name="senha">Senha do paciente</param>
+        /// <param name="email">Email do usuario</param>
+        /// <param name="senha">Senha do usuario</param>
         /// <returns>Token de acesso</returns>
-        [HttpPost("Login_Paciente")]
-        public IActionResult LogarPaciente(string email, string senha)
+        [HttpPost]
+        public IActionResult Logar(string email, string senha)
         {
-            var logar = repo.LogarPaciente(email, senha);
+            var logar = repo.Logar(email, senha);
             if (logar == null)
-                return Unauthorized( new {msg = "Usuário não autorizado"});
+                return Unauthorized( new {msg = "Usuário não encontrado"});
 
             return Ok(new { token = logar });
-        }
-
-        /// <summary>
-        /// Espaço para login de Medicos
-        /// </summary>
-        /// <param name="email">Email do medico</param>
-        /// <param name="senha">Senha do medico</param>
-        /// <returns>Token de acesso</returns>
-        [HttpPost("Login_Medico")]
-        public IActionResult LogarMedico(string email, string senha)
-        {
-            var logar = repo.LogarMedico(email, senha);
-            if (logar == null)
-                return Unauthorized(new { msg = "Usuário não autorizado" });
-
-            return Ok(new { token = logar });
-        }
+        }        
     }
 }

@@ -197,7 +197,7 @@ namespace API_Consultas_Agendadas.Controllers
 
                 repositorio.Delete(busca);
 
-                return NoContent();
+                return Ok(new { msg = "Excluido com sucesso" });
             }
             catch (System.Exception ex)
             {
