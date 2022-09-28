@@ -14,29 +14,33 @@ namespace Consultas_Agendadas_Tests.Controllers
 {
     public class ConsultaControllerTest
     {
-        // Preparação
+        // Preparação do Mock com o respectivo repositório
         private readonly Mock<IConsultaRepository> _mockRepo;
-        private readonly ConsultaController _controller;
+        private readonly ConsultaController _controller; // Instancia do controller
         public ConsultaControllerTest()
         {
             _mockRepo = new Mock<IConsultaRepository>();
             _controller = new ConsultaController(_mockRepo.Object);
         }
 
+        /// <summary>
+        /// Testa o retorno do status Ok
+        /// </summary>
         [Fact]
         public void TestActionResultReturnOk()
         {
 
-            // Execução
             var result = _controller.Listar();
-            // Retorno
             Assert.IsType<OkObjectResult>(result);
         }
 
+        /// <summary>
+        /// Testa a execução do método GetAll
+        /// </summary>
         [Fact]
         public void TestGetAll()
         {
-            // Execução - Act
+            // Act
             var actionResult = _controller.Listar();
             var okObjectResult = actionResult as OkObjectResult;
             okObjectResult.Value = new List<Consulta>();
@@ -45,16 +49,22 @@ namespace Consultas_Agendadas_Tests.Controllers
 
         }
 
+        /// <summary>
+        /// Testa o retorno do status code 200 (Sucesso)
+        /// </summary>
         [Fact]
         public void TestStatusCodeSuccess()
         {
-            // Execução - Act
+            // Act
             var actionResult = _controller.Listar();
             var result = actionResult as OkObjectResult;
             // Retorno
             Assert.Equal(200, result.StatusCode);
         }
 
+        /// <summary>
+        /// Testa se o retorno é Not Null
+        /// </summary>
         [Fact]
         public void TestActionResultNotNull()
         {
@@ -64,6 +74,9 @@ namespace Consultas_Agendadas_Tests.Controllers
             Assert.NotNull(actionResult);
         }
 
+        /// <summary>
+        /// Testa o método de Insert com um objeto de teste
+        /// </summary>
         [Fact]
         public void TestInsert()
         {

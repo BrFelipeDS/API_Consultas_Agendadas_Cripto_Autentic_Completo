@@ -1,6 +1,7 @@
 ﻿using API_Consultas_Agendadas.Data;
 using API_Consultas_Agendadas.Interfaces;
 using API_Consultas_Agendadas.Models;
+using Microsoft.Data.SqlClient.Server;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.IdentityModel.Tokens.Jwt;
@@ -31,7 +32,7 @@ namespace API_Consultas_Agendadas.Repositories
 
             if(usuario is not null)
             {
-                bool confere = BCrypt.Net.BCrypt.Verify(senha, usuario.Senha);
+                bool confere = BCrypt.Net.BCrypt.Verify(senha, usuario.Senha); // Geração de Hash para criptografia de senha
 
                 if (confere)
                 {
@@ -42,7 +43,7 @@ namespace API_Consultas_Agendadas.Repositories
                     {
                         new Claim(JwtRegisteredClaimNames.Email, usuario.Email),
                         new Claim(JwtRegisteredClaimNames.Jti, usuario.Id.ToString()),
-                        new Claim(ClaimTypes.Role, "Paciente"),
+                        new Claim(ClaimTypes.Role, "Paciente"), //Define a Role Paciente, que não possui tantos acessos
 
                         new Claim("Acesso", "Paciente")
                     };
@@ -93,7 +94,7 @@ namespace API_Consultas_Agendadas.Repositories
                     {
                         new Claim(JwtRegisteredClaimNames.Email, usuario.Email),
                         new Claim(JwtRegisteredClaimNames.Jti, usuario.Id.ToString()),
-                        new Claim(ClaimTypes.Role, "Medico"),
+                        new Claim(ClaimTypes.Role, "Medico"), //Define a Role de Medico, que concede acessos extras
 
                         new Claim("Acesso", "Medico")
                     };

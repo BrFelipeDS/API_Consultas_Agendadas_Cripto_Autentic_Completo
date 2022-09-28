@@ -17,7 +17,12 @@ namespace API_Consultas_Agendadas.Controllers
             repo = _repo;
         }
 
-
+        /// <summary>
+        /// Espaço para login de Pacientes
+        /// </summary>
+        /// <param name="email">Email do paciente</param>
+        /// <param name="senha">Senha do paciente</param>
+        /// <returns>Token de acesso</returns>
         [HttpPost("Login_Paciente")]
         public IActionResult LogarPaciente(string email, string senha)
         {
@@ -28,6 +33,12 @@ namespace API_Consultas_Agendadas.Controllers
             return Ok(new { token = logar });
         }
 
+        /// <summary>
+        /// Espaço para login de Medicos
+        /// </summary>
+        /// <param name="email">Email do medico</param>
+        /// <param name="senha">Senha do medico</param>
+        /// <returns>Token de acesso</returns>
         [HttpPost("Login_Medico")]
         public IActionResult LogarMedico(string email, string senha)
         {
