@@ -2,6 +2,7 @@
 using API_Consultas_Agendadas.Interfaces;
 using API_Consultas_Agendadas.Models;
 using Microsoft.Data.SqlClient.Server;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.IdentityModel.Tokens.Jwt;
@@ -23,7 +24,9 @@ namespace API_Consultas_Agendadas.Repositories
         {
             //return ctx.Usuarios.Where(x => x.Email == email && x.Senha == senha).FirstOrDefault();
 
-            var usuario = ctx.Usuarios.FirstOrDefault(x => x.Email == email);
+            var usuario = ctx.Usuarios
+                                .Include(u => u.IdTipoUsuarioNavigation)
+                                .FirstOrDefault(x => x.Email == email);
             
             if (usuario is not null)
             {
@@ -32,17 +35,16 @@ namespace API_Consultas_Agendadas.Repositories
                 if (confere)
                 {
                     //Criar as credenciais do JWT
-                    var tipoUsuario = ctx.TipoUsuarios.Find(usuario.IdTipoUsuario);
-
+                    
                     // Definimos as Claims
                     var minhasClaims = new[]
                     {
                         new Claim(JwtRegisteredClaimNames.Email, usuario.Email),
                         new Claim(JwtRegisteredClaimNames.Jti, usuario.Id.ToString()),
 
-                        new Claim(ClaimTypes.Role, tipoUsuario.Tipo), //Define a Role de Medico, que concede acessos extras
+                        new Claim(ClaimTypes.Role, usuario.IdTipoUsuarioNavigation.Tipo), //Define a Role de Medico, que concede acessos extras
 
-                        new Claim("Acesso", tipoUsuario.Tipo)
+                        new Claim("Acesso", usuario.IdTipoUsuarioNavigation.Tipo)
                     };
 
                     // Criamos as chaves
