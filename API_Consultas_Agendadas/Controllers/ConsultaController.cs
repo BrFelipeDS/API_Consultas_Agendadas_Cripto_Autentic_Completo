@@ -25,6 +25,7 @@ namespace API_Consultas_Agendadas.Controllers
         /// </summary>
         /// <param name="consulta">Objeto completo a ser inserido</param>
         /// <returns>Objeto inserido</returns>
+        [Authorize(Roles = "Medico")]
         [HttpPost]
         public IActionResult Cadastrar(Consulta consulta)
         {
@@ -180,6 +181,7 @@ namespace API_Consultas_Agendadas.Controllers
         /// </summary>
         /// <param name="id">Id do objeto a ser deletado</param>
         /// <returns></returns>
+        [Authorize(Roles = "Medico")]
         [HttpDelete("{id}")]
         public IActionResult Deletar(int id)
         {

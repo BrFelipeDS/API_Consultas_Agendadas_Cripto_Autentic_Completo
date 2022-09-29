@@ -1,8 +1,10 @@
 ﻿using API_Consultas_Agendadas.Interfaces;
 using API_Consultas_Agendadas.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 namespace API_Consultas_Agendadas.Controllers
 {
@@ -183,6 +185,7 @@ namespace API_Consultas_Agendadas.Controllers
         /// </summary>
         /// <param name="id">Id do objeto a ser deletado</param>
         /// <returns></returns>
+        [Authorize(Roles = "Medico")]
         [HttpDelete("{id}")]
         public IActionResult Deletar(int id)
         {

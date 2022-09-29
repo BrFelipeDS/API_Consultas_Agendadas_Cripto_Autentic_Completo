@@ -68,3 +68,12 @@ GO
 INSERT INTO TipoUsuario (Tipo) VALUES ('Paciente'),
 									  ('Medico');
 GO
+
+INSERT INTO Usuario(Nome, Email, Senha, IdTipoUsuario) VALUES ('Fernanda', 'fernanda@email.com', '$2b$10$d4Vh9zpyRNOg/uLYqpJNL.aul2C8bpLU4Akwi/VYWDtQ8XQit1HEa', 2)									  
+GO
+
+INSERT INTO Especialidade(Categoria) VALUES ('Cardiologia')									  
+GO
+
+INSERT INTO Medico(CRM, IdUsuario, IdEspecialidade) VALUES ('12345', 1, 1)									  
+GO

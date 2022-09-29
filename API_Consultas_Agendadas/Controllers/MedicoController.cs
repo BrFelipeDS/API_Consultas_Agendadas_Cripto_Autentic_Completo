@@ -24,6 +24,7 @@ namespace API_Consultas_Agendadas.Controllers
         /// </summary>
         /// <param name="medico">Objeto completo a ser inserido</param>
         /// <returns>Objeto inserido</returns>
+        [Authorize(Roles = "Medico")]
         [HttpPost]
         public IActionResult Cadastrar(Medico medico)
         {
